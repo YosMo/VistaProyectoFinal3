@@ -78,10 +78,30 @@ fun ListView(navController: NavHostController) {
     ) {
         Column () {
 
-            Text(text = "Equipo",
-                fontSize = 30.sp,
-                fontFamily = FontFamily.Cursive,
-                color = Color(0xFFFFFFFF))
+            Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
+                Text(text = "Equipo",
+                    fontSize = 30.sp,
+                    fontFamily = FontFamily.Cursive,
+                    color = Color(0xFFFFFFFF))
+
+                Spacer(modifier = Modifier.width(60.dp))
+                Button(
+                    onClick = { navController.popBackStack() },
+                    colors = ButtonDefaults.buttonColors(Color(0xFFFFFFF)),
+                    modifier = Modifier
+                        .padding(horizontal = 5.dp)
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.flecha),
+                        contentDescription = "Flecha",
+                        modifier = Modifier
+                            .width(35.dp)
+                            .height(20.dp)
+
+                    )
+
+                
+            }}
 
             
             Row(horizontalArrangement= Arrangement.Start, modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
@@ -92,10 +112,12 @@ fun ListView(navController: NavHostController) {
                     modifier= Modifier.fillMaxWidth(),
                     leadingIcon = {
                         Image (
-                            painter = painterResource(id = R.drawable.pf),
+                            painter = painterResource(id = R.drawable.balon),
                             contentDescription = "Person",
-                            modifier = Modifier.size(70.dp)
-                                .padding(10.dp,0.dp)
+                            modifier = Modifier
+                                .size(50.dp)
+                                .padding(10.dp, 0.dp)
+
                         )
                     }
                 )
@@ -112,7 +134,7 @@ fun ListView(navController: NavHostController) {
         LazyColumn {
             items(GamesViewModel.getPlayerList()) {
                     player ->
-                val playerString = "${player.name} - ${player.num}"
+                val playerString = "${player.player_name} - ${player.num}"
 
                 if (playerString.contains(prompt, ignoreCase = true)) {
                     PlayerCard(navController, player)

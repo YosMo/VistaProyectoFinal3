@@ -25,24 +25,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.vistaproyectofinal.R
-
-@Preview(showBackground = true)
-@Composable
-fun InicioSesion(){
-    Sesion()
-}
+import com.example.vistaproyectofinal.components.PlayerCard
+import com.example.vistaproyectofinal.models.Player
 
 @Composable
-fun Sesion() {
+fun InicioSesion(navController: NavHostController) {
 
     //Variables
-    var correo: String by remember { mutableStateOf("") }
-    var contraseña: String by remember { mutableStateOf("") }
+    var nombre: String by remember { mutableStateOf("") }
 
     Box(
         Modifier
@@ -73,7 +71,7 @@ fun Sesion() {
         Spacer(modifier = Modifier.height(40.dp))
 
         Text(
-            text = "Iniciar Sesión",
+            text = stringResource(R.string.login),
             fontSize = 30.sp,
             fontFamily = FontFamily.Cursive,
             color = Color(0xFFFFFFFF)
@@ -82,15 +80,15 @@ fun Sesion() {
         Spacer(modifier = Modifier.height(25.dp))
 
         Text(
-            text = "Correo",
+            text = "Nombre",
             fontSize = 20.sp,
             color = Color(0xFFFFFFFF)
         )
 
         OutlinedTextField(
-            value = correo,
-            onValueChange = {correo = it.toString()},
-            label = { Text("Correo") },
+            value = nombre,
+            onValueChange = {nombre = it.toString()},
+            label = { Text("Ingresa tu nombre") },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 30.dp),
@@ -99,29 +97,11 @@ fun Sesion() {
 
         Spacer(modifier = Modifier.height(10.dp))
 
-        Text(
-            text = "Contraseña",
-            fontSize = 20.sp,
-            color = Color(0xFFFFFFFF)
 
-        )
-        
-        OutlinedTextField(
-            value = contraseña,
-            onValueChange = {contraseña = it.toString()},
-            label = { Text("Contraseña") },
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 30.dp),
-
-
-            )
-
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         Button(
-            onClick = {
-            },
+            onClick = { navController.navigate("EquiposView") },
             colors = ButtonDefaults.buttonColors(Color(0xFF110F13)),
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
@@ -138,12 +118,16 @@ fun Sesion() {
         }
 
         Spacer(modifier = Modifier.height(15.dp))
-        Text(
-            text = "¿No tienes cuenta? Registrate",
-            fontSize = 15.sp,
-            color = Color(0xFFFFFFFF)
-        )
+
 
 
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewInicioSesion() {
+    InicioSesion(
+        navController = rememberNavController()
+    )
 }

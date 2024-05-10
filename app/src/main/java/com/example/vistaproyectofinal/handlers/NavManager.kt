@@ -7,69 +7,95 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.vistaproyectofinal.R
+import com.example.vistaproyectofinal.views.InicioSesion
 import com.example.vistaproyectofinal.views.ListView
+import com.example.vistaproyectofinal.views.MyToolbar
 import com.example.vistaproyectofinal.views.PlayerView
 
 
 @Composable
 fun NavManager() {
     var navController: NavHostController = rememberNavController()
-    NavHost(navController = navController, startDestination = "ListView") {
+    NavHost(navController = navController, startDestination = "InicioSesion") {
+
+        composable(route = "InicioSesion") {
+            InicioSesion(navController)
+        }
+
+        composable(route = "EquiposView") {
+            MyToolbar(navController)
+        }
+
 
         //Definiendo Rutas
         composable(route = "ListView") {
             ListView(navController)
         }
 
-        composable(route = "PlayerView" +
-                "/{message}" +
-                "/{id}" +
-                "/{name}" +
-                "/{mail}" +
-                "/{semester}" +
-                "/{career}" +
-                "/{hasScolarship}" +
-                "/{gpa}" +
-                "/{soldTickets}" +
-                "/{profilePic}",
+        composable(route = "PlayerView /{player_name} /{age} /{num} /{games} /{team} /{season} /{field_goals} /{ORB} /{DRB} /{TRB} /{AST} /{STL} /{BLK} /{TOV} /{PF} /{PTS} /{profilePic}",
 
             arguments =
             listOf(
-                navArgument("message") {type = NavType.StringType},
-                navArgument("id") {type = NavType.IntType},
-                navArgument("name") {type = NavType.StringType},
-                navArgument("mail") {type = NavType.StringType},
-                navArgument("semester") {type = NavType.IntType},
-                navArgument("career") {type = NavType.StringType},
-                navArgument("hasScolarship") {type = NavType.BoolType},
-                navArgument("gpa") {type = NavType.FloatType},
-                navArgument("soldTickets") {type = NavType.IntType},
+                navArgument("player_name") {type = NavType.StringType},
+                navArgument("age") {type = NavType.IntType},
+                navArgument("num") {type = NavType.IntType},
+                navArgument("games") {type = NavType.IntType},
+                navArgument("team") {type = NavType.StringType},
+                navArgument("season") {type = NavType.IntType},
+                navArgument("field_goals") {type = NavType.IntType},
+                navArgument("ORB") {type = NavType.IntType},
+                navArgument("DRB") {type = NavType.IntType},
+                navArgument("TRB") {type = NavType.IntType},
+                navArgument("AST") {type = NavType.IntType},
+                navArgument("STL") {type = NavType.IntType},
+                navArgument("BLK") {type = NavType.IntType},
+                navArgument("TOV") {type = NavType.IntType},
+                navArgument("PF") {type = NavType.IntType},
+                navArgument("PTS") {type = NavType.IntType},
                 navArgument("profilePic") {type = NavType.IntType}
+
+
             )
         ) {
                 parameters ->
-            val message = parameters.arguments?.getString("message") ?: ""
-            val id = parameters.arguments?.getInt("id") ?: 0
-            val name = parameters.arguments?.getString("name") ?: ""
-            val mail = parameters.arguments?.getString("mail") ?: ""
-            val semester = parameters.arguments?.getInt("semester") ?: 0
-            val career = parameters.arguments?.getString("career") ?: ""
-            val hasScolarship = parameters.arguments?.getBoolean("hasScolarship") ?: false
-            val gpa = parameters.arguments?.getFloat("gpa") ?: 0.0
-            val soldTickets = parameters.arguments?.getInt("soldTickets") ?: 0
+            val player_name = parameters.arguments?.getString("player_name") ?: ""
+            val age = parameters.arguments?.getInt("age") ?: 0
+            val num = parameters.arguments?.getInt("num") ?: 0
+            val games = parameters.arguments?.getInt("games") ?: 0
+            val team = parameters.arguments?.getString("team") ?: ""
+            val season = parameters.arguments?.getInt("season") ?: 0
+            val field_goals = parameters.arguments?.getInt("field_goals") ?: 0
+            val ORB = parameters.arguments?.getInt("ORB") ?: 0
+            val DRB = parameters.arguments?.getInt("DRB") ?: 0
+            val TRB = parameters.arguments?.getInt("TRB") ?: 0
+            val AST = parameters.arguments?.getInt("AST") ?: 0
+            val STL = parameters.arguments?.getInt("STL") ?: 0
+            val BLK = parameters.arguments?.getInt("BLK") ?: 0
+            val TOV = parameters.arguments?.getInt("TOV") ?: 0
+            val PF = parameters.arguments?.getInt("PF") ?: 0
+            val PTS = parameters.arguments?.getInt("PTS") ?: 0
             val profilePic = parameters.arguments?.getInt("profilePic") ?: 0
 
             PlayerView(
                 navController,
-                message,
-                id,
-                name,
-                mail,
-                semester,
-                career,
-                hasScolarship,
-                gpa.toFloat(),
-                soldTickets,
+                player_name,
+                age,
+                num,
+                games,
+                team,
+                season,
+                field_goals,
+                ORB,
+                DRB,
+                TRB,
+                AST,
+                STL,
+                BLK,
+                TOV,
+                PF,
+                PTS,
+                profilePic
             )
         }
     }

@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">VistaProyectoFinal</string>
-    <string name="login">Inicio de sesion</string>
+    <string name="login">Inicio de sesión</string>
     <string name="password">Contraseña</string>
 </resources>

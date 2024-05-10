@@ -28,17 +28,37 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.vistaproyectofinal.R
 
 import com.example.vistaproyectofinal.models.Player
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PlayerCard(navController: NavHostController, player: Player) {
+fun PlayerCard(navController: NavHostController, player: Player, ) {
 
     Card(modifier = Modifier
         .padding(20.dp,10.dp,20.dp,10.dp),
         onClick = {
+            navController.navigate("PlayerView" /*+
+                    "/${player.player_name}" +
+                    "/${player.num}" +
+                    "/${player.AST}" +
+                    "/${player.BLK}" +
+                    "/${player.DRB}" +
+                    "/${player.ORB}" +
+                    "/${player.PF}" +
+                    "/${player.AST}" +
+                    "/${player.PTS}" +
+                    "/${player.STL}" +
+                    "/${player.TOV}" +
+                    "/${player.TRB}" +
+                    "/${player.age}" +
+                    "/${player.field_goals}" +
+                    "/${player.games}" +
+                    "/${player.season}" +
+                    "/${player.team}" +
+                    "/${player.profilePic}"*/)
             }
     ) {
         Row(
@@ -55,14 +75,14 @@ fun PlayerCard(navController: NavHostController, player: Player) {
             Column (modifier = Modifier.padding(10.dp,20.dp,10.dp,20.dp)) {
                 Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
                     Text(
-                        text = "${player.position}",
+                        text = "${player.team}",
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFFFFFFFF),
+                        color = Color(0xFFE43A4E),
                         fontSize = 20.sp
                     )
 
                     Text(
-                        text = "${player.name}",
+                        text = "${player.player_name}",
                         color = Color(0xFFFFFFFF),
                         fontSize = 20.sp
                     )
@@ -85,6 +105,6 @@ fun PlayerCard(navController: NavHostController, player: Player) {
 fun PreviewCard() {
     PlayerCard(
         navController = rememberNavController(),
-        player = Player("QB", "Pedro Cacahuate", 80)
+        player = Player("Daishen Nix", 20 , 57, "HOU", 2023,81, 18,80,98,132,31,7,86,59,226, R.drawable.jugador, 32)
     )
 }
