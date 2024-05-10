@@ -40,25 +40,24 @@ fun PlayerCard(navController: NavHostController, player: Player, ) {
     Card(modifier = Modifier
         .padding(20.dp,10.dp,20.dp,10.dp),
         onClick = {
-            navController.navigate("PlayerView" /*+
+            navController.navigate("PlayerView" +
                     "/${player.player_name}" +
-                    "/${player.num}" +
-                    "/${player.AST}" +
-                    "/${player.BLK}" +
-                    "/${player.DRB}" +
-                    "/${player.ORB}" +
-                    "/${player.PF}" +
-                    "/${player.AST}" +
-                    "/${player.PTS}" +
-                    "/${player.STL}" +
-                    "/${player.TOV}" +
-                    "/${player.TRB}" +
                     "/${player.age}" +
-                    "/${player.field_goals}" +
+                    "/${player.num}" +
                     "/${player.games}" +
-                    "/${player.season}" +
                     "/${player.team}" +
-                    "/${player.profilePic}"*/)
+                    "/${player.season}" +
+                    "/${player.field_goals}" +
+                    "/${player.ORB}" +
+                    "/${player.DRB}" +
+                    "/${player.TRB}" +
+                    "/${player.AST}" +
+                    "/${player.STL}" +
+                    "/${player.BLK}" +
+                    "/${player.TOV}" +
+                    "/${player.PF}" +
+                    "/${player.PTS}" +
+                    "/${player.profilePic}")
             }
     ) {
         Row(

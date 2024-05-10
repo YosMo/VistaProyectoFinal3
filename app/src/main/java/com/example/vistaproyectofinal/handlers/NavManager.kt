@@ -33,13 +33,29 @@ fun NavManager() {
             ListView(navController)
         }
 
-        composable(route = "PlayerView /{player_name} /{age} /{num} /{games} /{team} /{season} /{field_goals} /{ORB} /{DRB} /{TRB} /{AST} /{STL} /{BLK} /{TOV} /{PF} /{PTS} /{profilePic}",
+        composable(route = "PlayerView" +
+                "/{player_name}" +
+                "/{age}" +
+                "/{games}" +
+                "/{team}" +
+                "/{season}" +
+                "/{field_goals}" +
+                "/{ORB}" +
+                "/{DRB}" +
+                "/{TRB}" +
+                "/{AST}"+
+                "/{STL}" +
+                "/{BLK}" +
+                "/{TOV}" +
+                "/{PF}" +
+                "/{PTS}" +
+                "/{profilePic}"+
+                "/{num}",
 
             arguments =
             listOf(
                 navArgument("player_name") {type = NavType.StringType},
                 navArgument("age") {type = NavType.IntType},
-                navArgument("num") {type = NavType.IntType},
                 navArgument("games") {type = NavType.IntType},
                 navArgument("team") {type = NavType.StringType},
                 navArgument("season") {type = NavType.IntType},
@@ -53,7 +69,8 @@ fun NavManager() {
                 navArgument("TOV") {type = NavType.IntType},
                 navArgument("PF") {type = NavType.IntType},
                 navArgument("PTS") {type = NavType.IntType},
-                navArgument("profilePic") {type = NavType.IntType}
+                navArgument("profilePic") {type = NavType.IntType},
+                navArgument("num") {type = NavType.IntType},
 
 
             )
@@ -61,7 +78,6 @@ fun NavManager() {
                 parameters ->
             val player_name = parameters.arguments?.getString("player_name") ?: ""
             val age = parameters.arguments?.getInt("age") ?: 0
-            val num = parameters.arguments?.getInt("num") ?: 0
             val games = parameters.arguments?.getInt("games") ?: 0
             val team = parameters.arguments?.getString("team") ?: ""
             val season = parameters.arguments?.getInt("season") ?: 0
@@ -76,12 +92,12 @@ fun NavManager() {
             val PF = parameters.arguments?.getInt("PF") ?: 0
             val PTS = parameters.arguments?.getInt("PTS") ?: 0
             val profilePic = parameters.arguments?.getInt("profilePic") ?: 0
+            val num = parameters.arguments?.getInt("num") ?: 0
 
             PlayerView(
                 navController,
                 player_name,
                 age,
-                num,
                 games,
                 team,
                 season,
@@ -95,7 +111,8 @@ fun NavManager() {
                 TOV,
                 PF,
                 PTS,
-                profilePic
+                profilePic,
+                num
             )
         }
     }

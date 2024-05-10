@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -31,6 +32,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,6 +43,7 @@ import androidx.navigation.NavHostController
 import com.example.vistaproyectofinal.R
 import androidx.navigation.compose.rememberNavController
 import com.example.vistaproyectofinal.handlers.NavManager
+import com.example.vistaproyectofinal.viewmodels.QuoteViewModel
 
 @Composable fun MyToolbar(navController: NavHostController){
     Scaffold(
@@ -49,6 +53,8 @@ import com.example.vistaproyectofinal.handlers.NavManager
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyTopAppBar(navController: NavHostController){
+
+
     TopAppBar( title = {
         Text(
             text = "League XPERTS",
@@ -68,7 +74,8 @@ fun MyTopAppBar(navController: NavHostController){
 
 
 @Composable
-fun EquiposView2(paddingValues: PaddingValues, navController: NavHostController) {
+fun EquiposView2(paddingValues: PaddingValues, navController: NavHostController, quoteViewModel: QuoteViewModel = QuoteViewModel()) {
+    var quote = quoteViewModel.quoteString
 
     Box(
         modifier = Modifier
@@ -92,6 +99,30 @@ fun EquiposView2(paddingValues: PaddingValues, navController: NavHostController)
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
+
+            Column() {
+                Column( modifier = Modifier
+                    .background(Color(0x90F30506), shape = RoundedCornerShape(15.dp))
+                    .padding(5.dp)
+
+                ) {Text(
+                    text = "Frase del día",
+                    fontSize = 25.sp,
+                    textAlign = TextAlign.Center,
+                    color = Color.White
+                )
+                }
+
+                Spacer(modifier = Modifier.height(30.dp))
+                Text(
+                    text = quote,
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    fontFamily = FontFamily.Cursive,
+                    color = Color.White
+                )
+            }
 
             Column(
                 modifier = Modifier

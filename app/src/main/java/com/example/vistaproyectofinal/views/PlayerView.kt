@@ -41,7 +41,6 @@ fun PlayerView(
     navController: NavHostController,
     player_name : String,
     age : Int,
-    num : Int,
     games : Int,
     team : String,
     season : Int,
@@ -55,7 +54,8 @@ fun PlayerView(
     TOV: Int,
     PF: Int,
     PTS: Int,
-    profilePic : Int
+    profilePic : Int,
+    num : Int
 ) {
     Box(
         modifier = Modifier
