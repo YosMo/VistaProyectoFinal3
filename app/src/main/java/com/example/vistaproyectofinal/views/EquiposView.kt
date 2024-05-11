@@ -48,7 +48,7 @@ import com.example.vistaproyectofinal.viewmodels.QuoteViewModel
 @Composable fun MyToolbar(navController: NavHostController){
     Scaffold(
         topBar = { MyTopAppBar(navController) },) {
-        EquiposView2(paddingValues = it, navController)
+        EquiposView2(paddingValues = it, navController, QuoteViewModel())
     } }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -100,29 +100,7 @@ fun EquiposView2(paddingValues: PaddingValues, navController: NavHostController,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            Column() {
-                Column( modifier = Modifier
-                    .background(Color(0x90F30506), shape = RoundedCornerShape(15.dp))
-                    .padding(5.dp)
 
-                ) {Text(
-                    text = "Frase del día",
-                    fontSize = 25.sp,
-                    textAlign = TextAlign.Center,
-                    color = Color.White
-                )
-                }
-
-                Spacer(modifier = Modifier.height(30.dp))
-                Text(
-                    text = quote,
-                    fontSize = 30.sp,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center,
-                    fontFamily = FontFamily.Cursive,
-                    color = Color.White
-                )
-            }
 
             Column(
                 modifier = Modifier
@@ -131,7 +109,32 @@ fun EquiposView2(paddingValues: PaddingValues, navController: NavHostController,
                     .padding(paddingValues),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                Column() {
+                    Column( modifier = Modifier
+                        .background(Color(0x90F30506), shape = RoundedCornerShape(15.dp))
+                        .padding(5.dp)
 
+                    ) {Text(
+                        text = "Frase del día",
+                        fontSize = 25.sp,
+                        textAlign = TextAlign.Center,
+                        color = Color.White
+                    )
+                    }
+
+                    Spacer(modifier = Modifier.height(30.dp))
+                    Text(
+                        text = quote,
+                        fontSize = 26.sp,
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center,
+                        fontFamily = FontFamily.Cursive,
+                        color = Color.White
+                    )
+
+                }
+
+                Spacer(modifier = Modifier.width(30.dp))
 
                 Column( modifier = Modifier
                     .background(Color(0x0FF50505), shape = RoundedCornerShape(15.dp))

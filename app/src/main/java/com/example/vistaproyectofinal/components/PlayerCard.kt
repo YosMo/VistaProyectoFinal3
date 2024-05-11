@@ -43,7 +43,6 @@ fun PlayerCard(navController: NavHostController, player: Player, ) {
             navController.navigate("PlayerView" +
                     "/${player.player_name}" +
                     "/${player.age}" +
-                    "/${player.num}" +
                     "/${player.games}" +
                     "/${player.team}" +
                     "/${player.season}" +
@@ -57,7 +56,8 @@ fun PlayerCard(navController: NavHostController, player: Player, ) {
                     "/${player.TOV}" +
                     "/${player.PF}" +
                     "/${player.PTS}" +
-                    "/${player.profilePic}")
+                    "/${player.profilePic}"+
+                    "/${player.num}")
             }
     ) {
         Row(
