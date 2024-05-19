@@ -1,5 +1,6 @@
 package com.example.vistaproyectofinal.handlers
 
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -10,17 +11,23 @@ import androidx.navigation.navArgument
 import com.example.vistaproyectofinal.R
 import com.example.vistaproyectofinal.views.InicioSesion
 import com.example.vistaproyectofinal.views.ListView
+import com.example.vistaproyectofinal.views.LogScreen
 import com.example.vistaproyectofinal.views.MyToolbar
 import com.example.vistaproyectofinal.views.PlayerView
 
 
+@ExperimentalMaterial3Api
 @Composable
 fun NavManager() {
     var navController: NavHostController = rememberNavController()
-    NavHost(navController = navController, startDestination = "InicioSesion") {
+    NavHost(navController = navController, startDestination = "LogScreen") {
 
         composable(route = "InicioSesion") {
             InicioSesion(navController)
+        }
+
+        composable(route = "LogScreen") {
+            LogScreen(navController)
         }
 
         composable(route = "EquiposView") {
