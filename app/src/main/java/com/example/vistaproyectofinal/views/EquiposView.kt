@@ -32,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -115,7 +116,7 @@ fun EquiposView2(paddingValues: PaddingValues, navController: NavHostController,
                         .padding(5.dp)
 
                     ) {Text(
-                        text = "Frase del día",
+                        text = stringResource(id = R.string.frase_dia),
                         fontSize = 25.sp,
                         textAlign = TextAlign.Center,
                         color = Color.White
@@ -142,7 +143,7 @@ fun EquiposView2(paddingValues: PaddingValues, navController: NavHostController,
 
                 ) {
                     Text(
-                        text = "Equipos",
+                        text = stringResource(id = R.string.equipos),
                         textAlign = TextAlign.Center,
                         fontSize = 25.sp,
                         fontWeight = FontWeight.Medium,

@@ -26,6 +26,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.ModifierLocalBeyondBoundsLayout
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -57,6 +58,10 @@ fun PlayerView(
     profilePic : Int,
     num : Int
 ) {
+    val años = stringResource(id = R.string.edad)
+    val juegos = stringResource(id = R.string.juegos)
+
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -130,14 +135,14 @@ fun PlayerView(
                     color = Color.White
                 )
                 Text(
-                    text = "$age años",
+                    text = "$age $años",
                     textAlign = TextAlign.Center,
                     fontSize = 25.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.Gray
                 )
                 Text(
-                    text = "$games juegos",
+                    text = "$games $juegos",
                     textAlign = TextAlign.Center,
                     fontSize = 25.sp,
                     fontWeight = FontWeight.Bold,
@@ -174,7 +179,7 @@ fun PlayerView(
             Spacer(modifier = Modifier.height(15.dp))
 
             Text(
-                text = "Estadísticas",
+                text = stringResource(id = R.string.estadisticas),
                 textAlign = TextAlign.Left,
                 fontSize = 25.sp,
                 fontWeight = FontWeight.Medium,
@@ -404,7 +409,7 @@ fun PlayerView(
                     .padding(horizontal = 5.dp)
             ) {
                 Text(
-                    text = "Regresar",
+                    text = stringResource(id = R.string.regresar),
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFFFFFFFF),
                     fontSize = 20.sp

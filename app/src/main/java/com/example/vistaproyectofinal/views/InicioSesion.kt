@@ -81,7 +81,7 @@ fun InicioSesion(navController: NavHostController) {
         Spacer(modifier = Modifier.height(25.dp))
 
         Text(
-            text = "Nombre",
+            text = stringResource(R.string.nombre),
             fontSize = 20.sp,
             color = Color(0xFFFFFFFF)
         )
@@ -89,7 +89,7 @@ fun InicioSesion(navController: NavHostController) {
         OutlinedTextField(
             value = nombre,
             onValueChange = {nombre = it.toString()},
-            label = { Text("Ingresa tu nombre") },
+            label = { stringResource(id = R.string.input_name) },
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 30.dp)
@@ -110,7 +110,7 @@ fun InicioSesion(navController: NavHostController) {
                 .padding(horizontal = 30.dp)
         ) {
             Text(
-                text = "Ingresar",
+                text = stringResource(id = R.string.ingresar),
                 color = Color(0xFFFFFFFF),
                 fontSize = 16.sp
             )

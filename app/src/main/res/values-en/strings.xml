@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">VistaProyectoFinal</string>
-    <string name="login">Log in</string>
+    <string name="login">Log In</string>
     <string name="password">Password</string>
+    <string name="nombre">Name</string>
+    <string name="input_name">State your name</string>
+    <string name="ingresar">Enter</string>
+    <string name="frase_dia">Today\'s frase is</string>
+    <string name="equipos">Teams</string>
+    <string name="equipo">Team</string>
+    <string name="buscar_jugador">Search player</string>
+    <string name="email">Email</string>
+    <string name="edad">years</string>
+    <string name="juegos">games</string>
+    <string name="estadisticas">Statistics</string>
+    <string name="regresar">Go Back</string>
 </resources>

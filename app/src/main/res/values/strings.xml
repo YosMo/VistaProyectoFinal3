@@ -2,4 +2,16 @@
     <string name="app_name">VistaProyectoFinal</string>
     <string name="login">Inicio de sesion</string>
     <string name="password">Contraseña</string>
+    <string name="nombre">Nombre</string>
+    <string name="input_name">Ingresa tu nombre</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="frase_dia">Frase del día</string>
+    <string name="equipos">Equipos</string>
+    <string name="equipo">Equipo</string>
+    <string name="buscar_jugador">Buscar Jugador</string>
+    <string name="email">Email</string>
+    <string name="edad">años</string>
+    <string name="juegos">juegos</string>
+    <string name="estadisticas">Estadísticas</string>
+    <string name="regresar">Regresar</string>
 </resources>

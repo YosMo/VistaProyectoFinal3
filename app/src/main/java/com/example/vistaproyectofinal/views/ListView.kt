@@ -35,6 +35,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -79,7 +80,7 @@ fun ListView(navController: NavHostController) {
         Column () {
 
             Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
-                Text(text = "Equipo",
+                Text(text = stringResource(id = R.string.equipo),
                     fontSize = 30.sp,
                     fontFamily = FontFamily.Cursive,
                     color = Color(0xFFFFFFFF))
@@ -108,7 +109,7 @@ fun ListView(navController: NavHostController) {
                 OutlinedTextField(
                     value = prompt,
                     onValueChange = {prompt = it},
-                    label = { Text("Buscar Jugador") },
+                    label = { stringResource(id = R.string.buscar_jugador) },
                     modifier= Modifier.fillMaxWidth(),
                     leadingIcon = {
                         Image (

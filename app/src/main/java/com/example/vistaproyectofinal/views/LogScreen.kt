@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -35,7 +37,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -74,7 +79,7 @@ fun LogScreen(navController: NavHostController){
             modifier = Modifier
                 .fillMaxSize(),
             contentScale = ContentScale.FillBounds,
-            colorFilter = ColorFilter.lighting(multiply = Color.DarkGray, add = Color.Transparent)
+            colorFilter = ColorFilter.lighting(multiply = Color.LightGray, add = Color.Transparent)
         )
     }
 
@@ -90,7 +95,7 @@ fun LogScreen(navController: NavHostController){
         Column(
             Modifier
                 .padding(30.dp)
-                .background(Color.White, shape = RoundedCornerShape(15.dp))
+                .background(Color.Black, shape = RoundedCornerShape(15.dp))
         ) {
             RowImage()
             /*RowName(name = name,
@@ -133,7 +138,8 @@ fun LogScreen(navController: NavHostController){
                     enabled = isValidEmail && isValidPassword,
                     colors = ButtonColors(containerColor = Color.Black, contentColor = Color.White, disabledContentColor = Color.Gray, disabledContainerColor = Color.Gray)
                 ) {
-                    Text(text = "Inciar Sesión",
+                    Text(
+                        stringResource(id = R.string.ingresar),
                         color = Color.White,
                         fontWeight = FontWeight.Medium,
                         fontSize = 16.sp)
@@ -188,46 +194,63 @@ fun RowPassword(
             .fillMaxWidth()
             .padding(10.dp),
         horizontalArrangement = Arrangement.Center) {
-        OutlinedTextField(
-            value = contrasena,
-            onValueChange = passwordChange,
-            maxLines = 1,
-            singleLine = true,
-            label = { Text(text = "Contraseña", color = Color.Black) },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            trailingIcon = {
-                val image = if(passwordVisible) {
-                    Icons.Filled.VisibilityOff
-                } else {
-                    Icons.Filled.Visibility
-                }
-                IconButton(
-                    onClick = passwordVisibleChange
-                ) {
-                    Icon(
-                        modifier = Modifier.background(Color.White),
-                        imageVector = image,
-                        contentDescription = "Ver contraseña")
-                }
-            },
-            visualTransformation = if(passwordVisible) {
-                VisualTransformation.None
-            } else {
-                PasswordVisualTransformation()
-            },
-            colors = if(isValidPassword) {
-                TextFieldDefaults.outlinedTextFieldColors(
-                    focusedLabelColor = Color.Green,
-                    focusedBorderColor = Color.Green
-                )
-            } else {
-                TextFieldDefaults.outlinedTextFieldColors(
-                    focusedLabelColor = Color.Red,
-                    focusedBorderColor = Color.Red
-                )
-            }
 
-        )
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center) {
+
+            Text(
+                text = stringResource(R.string.password),
+                fontSize = 20.sp,
+                color = Color(0xFFFFFFFF)
+            )
+
+            OutlinedTextField(
+                value = contrasena,
+                onValueChange = passwordChange,
+                maxLines = 1,
+                singleLine = true,
+                label = { Text(text = "", color = Color.Gray) },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                trailingIcon = {
+                    val image = if(passwordVisible) {
+                        Icons.Filled.VisibilityOff
+                    } else {
+                        Icons.Filled.Visibility
+                    }
+                    IconButton(
+                        onClick = passwordVisibleChange
+                    ) {
+                        Icon(
+                            modifier = Modifier.background(Color.Black),
+                            imageVector = image,
+                            contentDescription = "Ver contraseña")
+                    }
+                },
+                visualTransformation = if(passwordVisible) {
+                    VisualTransformation.None
+                } else {
+                    PasswordVisualTransformation()
+                },
+                colors = if(isValidPassword) {
+                    TextFieldDefaults.outlinedTextFieldColors(
+                        focusedLabelColor = Color.Green,
+                        focusedBorderColor = Color.Green,
+                        focusedTextColor = Color.Gray
+
+                    )
+                } else {
+                    TextFieldDefaults.outlinedTextFieldColors(
+                        focusedLabelColor = Color.Red,
+                        focusedBorderColor = Color.Red,
+                        focusedTextColor = Color.Gray
+                    )
+                }
+
+            )
+        }
+
+
     }
 }
 
@@ -244,25 +267,46 @@ fun RowEmail(
             .padding(10.dp),
         horizontalArrangement = Arrangement.Center
     ) {
-        OutlinedTextField(
-            value = email,
-            onValueChange = emailChange,
-            label = { Text(text = "Email", color = Color.Black) },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-            maxLines = 1,
-            singleLine = true,
-            colors = if(isValid) {
-                TextFieldDefaults.outlinedTextFieldColors(
-                    focusedLabelColor = Color.Green,
-                    focusedBorderColor = Color.Green
-                )
-            } else {
-                TextFieldDefaults.outlinedTextFieldColors(
-                    focusedLabelColor = Color.Red,
-                    focusedBorderColor = Color.Red
-                )
-            }
-        )
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center) {
+            Text(
+                text = stringResource(R.string.login),
+                fontSize = 30.sp,
+                fontFamily = FontFamily.Cursive,
+                color = Color(0xFFFFFFFF)
+            )
+            Spacer(modifier = Modifier.height(25.dp))
+
+            Text(
+                text = stringResource(R.string.email),
+                fontSize = 20.sp,
+                color = Color(0xFFFFFFFF)
+            )
+
+            OutlinedTextField(
+                value = email,
+                onValueChange = emailChange,
+                label = { Text(text = "", color = Color.Gray) },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+                maxLines = 1,
+                singleLine = true,
+                colors = if(isValid) {
+                    TextFieldDefaults.outlinedTextFieldColors(
+                        focusedLabelColor = Color.Green,
+                        focusedBorderColor = Color.Green,
+                        focusedTextColor = Color.Gray
+                    )
+                } else {
+                    TextFieldDefaults.outlinedTextFieldColors(
+                        focusedLabelColor = Color.Red,
+                        focusedBorderColor = Color.Red,
+                        focusedTextColor = Color.Gray
+                    )
+                }
+            )
+        }
+
     }
 }
 
@@ -277,14 +321,18 @@ fun RowName(
             .padding(10.dp),
         horizontalArrangement = Arrangement.Center
     ) {
-        OutlinedTextField(
-            value = name,
-            onValueChange = onNameChange,
-            label = { Text(text = "Name", color = Color.Black) },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-            maxLines = 1,
-            singleLine = true,
-        )
+
+            OutlinedTextField(
+                value = name,
+                onValueChange = onNameChange,
+                label = { Text(text = "Name", color = Color.Black) },
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+                maxLines = 1,
+                singleLine = true,
+            )
+
+
+
     }
 }
 
